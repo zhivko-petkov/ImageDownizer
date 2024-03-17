@@ -50,6 +50,13 @@ namespace ImageDownsizer
             {
                 MessageBox.Show("Please select directory where you want to save downsized image", "Validation Problem");
             }
+            
+            double percentage = Double.Parse(percentage_combo_box.Text);
+
+            if(percentage < 0 || percentage > 100)
+            {
+                MessageBox.Show("Downsized image percentage have to be betweeen 0 to 100", "Validation Problem");
+            }
 
             string savePath = $"{saveFileDialog1.FileName}{Path.GetExtension(openFileDialog1.FileName)}";
 

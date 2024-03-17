@@ -1,6 +1,4 @@
 using System.Diagnostics;
-using System.Drawing.Imaging;
-using System.Windows.Forms;
 
 namespace ImageDownsizer
 {
@@ -37,6 +35,11 @@ namespace ImageDownsizer
         {
             duration.Restart();
             duration_label.Text = $"Proccessing time is";
+            if (resizedImagePictureBox.Image != null)
+            {
+                saveFileDialog1.FileName = saveFileDialog1.FileName + 1; 
+            }
+
             if (browsed_file_textBox.Text == null || browsed_file_textBox.Text.Trim().Equals(""))
             {
                 MessageBox.Show("Please select image for downsizing", "Validation Problem");
@@ -70,6 +73,7 @@ namespace ImageDownsizer
             }
             duration.Stop();
             Image im = Image.FromFile(savePath);
+
             resizedImagePictureBox.Image = im;
             duration_label.Text = $"Proccessing time is {duration.ElapsedMilliseconds} ms. Resized image w: {im.Width} h: {im.Height}";
 
